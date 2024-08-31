@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: black;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hero{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    height: 77vh;
+}
+
+.heromainTextDiv {
+    padding: 10px 200px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.heromainTextDiv h1{
+    font-size: 3rem;
+    margin-bottom: 2vw;
+}
+
+.heromainTextDiv p{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: hsl(0 , 0%, 60%);
+    margin-bottom: 2vw;
+}
+
+.hero img{
+    width: 50vw;
+    display: flex;
+
+}
+
+.joinHero button{
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background: rgb(143,141,255);
+    background: linear-gradient(0deg, rgba(143,141,255,1) 2%, rgba(184,114,196,1) 100%);
+    color: white;
+    transition: all 0.3s;
+}
+
+.joinhero button a{
+    text-decoration: none;
+    color: white;
+}
+.joinHero button:hover{
+    cursor: pointer;
+    scale: 1.06;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    border-top: 1px solid hsla(0, 0%, 0%, 0.144);
+    padding: 20px 0;
+}
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    width: 300px;
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 10px;
+    padding: 20px; 
+    box-sizing: border-box; 
+}
+.Container i {
+    margin-bottom: 10px; 
+    color: hsl(0 , 0%, 80%);;
+}
+.Container p {
+    margin: 5px 0; 
+    color: hsl(0 , 0%, 70%);;
+}
+
+@media (max-width:750px) {
+    .mainContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero{
+        flex-direction: column;
+    }
+    .heromainTextDiv{
+        padding: 0px;
+        align-items: center;
+        text-align: center;
+        padding: 5px;
+    }
+
+    .heromainTextDiv h1{
+        font-size: 2.2rem;
+        margin-bottom: 5vh;
+        margin-top: 2vh;
+    }
+
+    .heromainTextDiv p{
+        font-size: 1.2rem;
+        margin-bottom: 5vh;
+    }
+    .ggp{
+        font-size: 0.3rem;
+    }
+}
+
+
+
+  

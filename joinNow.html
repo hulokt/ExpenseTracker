@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+body {
+    height: auto; /* Remove fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2vw 4vw;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    animation: bounce 2s;
+    animation-delay: 1s;
+    margin: 0 auto;
+    text-align: center;
+}
+
+form h3 {
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+    background: linear-gradient(90deg, rgb(21, 10, 10), rgb(58, 58, 58), rgb(207, 156, 218), rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+form input, form textarea {
+    border: none;
+    margin: 10px 0;
+    padding: 20px;
+    outline: none;
+    background: hsl(0, 0%, 94%);
+    font-size: 1rem;
+}
+
+form textarea {
+    width: 100%; 
+    max-width: 600px; 
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 15px;
+    background: linear-gradient(120deg,rgb(21, 10, 10),rgb(207, 156, 218));
+    color: white;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 20px auto 0;
+    transition: all 0.3s;
+}
+
+form button:hover {
+    transform: scale(1.05);
+}
+
+#profileCard {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+#h3Name {
+    margin-top: 30px ;
+    font-weight: 800;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(90deg, rgb(21, 10, 10), rgb(149, 141, 141), rgb(207, 156, 218), rgb(220, 198, 233));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#profileCard button {
+    padding: 10px;
+    margin: 10px;
+    width: 10vw;
+    cursor: pointer;
+    background: linear-gradient(120deg,rgb(40, 40, 40),rgb(131, 131, 131));
+    color: white;
+    border: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#profileCard button:hover {
+    scale: 1.05;
+}
+
+#signUpSuccses {
+    display: none;
+    flex-direction: column;
+    
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+.input-section label {
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.input-section input[type="number"], .input-section input[type="date"] {
+    padding: 5px;
+    margin-right: 10px;
+    outline: none;
+    width: 150px; /* Set an initial width */
+    transition: width 0.8s ease; /* Smooth transition */
+}
+
+.input-section input[type="number"]:hover, .input-section input[type="date"]:hover {
+    width: 200px; /* Removed hover effect that causes shrinking */
+}
+
+.input-section input[type="date"] {
+    cursor: pointer;
+}
+
+.input-section button {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Added margin to avoid cut-off */
+}
+
+.expenses-list {
+    margin: 20px;
+    margin-bottom: 30vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: linear-gradient(120deg,rgb(40, 40, 40),rgb(131, 131, 131));
+    color: white;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#category-select {
+    padding: 5px;
+    width: 150px; /* Set an initial width */
+    transition: width 0.8s ease; /* Smooth transition */
+    cursor: pointer;
+} 
+
+#category-select:hover {
+    width: 200px; /* Expand width on hover */
+}
+
+@media (max-width: 712px) {
+    body {
+        height: auto; /* Removed fixed height */
+    }
+    .expenses-list {
+    margin: 20px;
+    margin-bottom: 60px;
+}
+
+    .input-section {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+        height: auto;
+    }
+
+    form button {
+        width: 200px;
+    }
+
+    .input-section div {
+        display: flex;
+        flex-direction: column; /* Stack label and input vertically */
+        align-items: flex-start;
+        margin-bottom: 15px; /* Space between input sections */
+        width: 70vw;
+    }
+
+    .input-section input[type="number"], .input-section input[type="date"], #category-select {
+        margin-bottom: 10px; /* Add some space between elements */
+        font-size: 1.1rem;
+        width: 70vw;
+    }
+
+    #category-select {
+        width: 70vw;
+    }
+
+    #category-select option {
+        width: 70vw;
+    }
+
+    /* Remove hover effect causing shrink on mobile */
+    .input-section input[type="number"]:hover, .input-section input[type="date"]:hover {
+        width: 70vw; 
+    }
+}
+
+
+    </style>
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+    emailjs.init({
+    publicKey: "ex9XUG1jbtDMPznE5",
+    });
+    })();
+    </script>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="navbar-placeholder"></div>
+    <form id="form" onsubmit="sendEmail(); this.reset(); return false;">
+        <h3>Create an account</h3>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <button type="submit">Create Account</button>
+        <p style="margin-top: 10px;">Already have an acount? <a href="joinNow.html">My account</a></p>
+    </form>
+
+    <section id="signUpSuccses">
+        <div><h3 id="h3Name">Hello, Khaled</h3></div>
+        <div id="profileCard">
+            <div class="input-section">
+                <div>
+                    <label for="category-select">category:</label>
+                    <select name="" id="category-select" >
+                        <option value="Food & beverage">Food & beverage</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Insurance">Insurance</option>
+                        <option value="Personal Care">Personal Care</option>
+                        <option value="Subscriptions">Subscriptions</option>
+                        <option value="Gifts & Donations">Gifts & Donations</option>
+                        <option value="Household Items">Household Items</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Fitness & Gym">Fitness & Gym</option>
+                        <option value="Pet Care">Pet Care</option>
+                        <option value="Entertainment & Leisure">Entertainment & Leisure</option>
+                        <option value="Childcare">Childcare</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="amount-input">Amount:</label>
+                    <input type="number" id="amount-input" placeholder="Type an amount">
+                </div>
+                <div>
+                    <label for="date-input">Date:</label>
+                    <input type="date" id="date-input">
+                </div>
+
+                <button id="add-btn" class="mybtn" style="width: 200px;">Add</button>
+              
+                
+            </div>
+        </div>
+        <div class="expenses-list">
+            <h2>expenses-list</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="expenses-table-body">
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total:</td>
+                        <td id="total-amount"></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+    </section>
+
+
+
+
+    <div id="footer"></div>
+    <script src="import.js"></script>
+    <script src="Joinnow.js"></script>
+</body>
+</html>
+
+
+
+
